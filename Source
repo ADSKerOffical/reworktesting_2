@@ -1,0 +1,245 @@
+local tool = Instance.new("Tool")
+tool.Name = "True Black Hole"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 15 then
+                lastPressTime = currentTime 
+              local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+                local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18483561136"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+Spooky = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
+Spooky.Name = "TBH_Spawn"
+Spooky.SoundId = "rbxassetid://18496532676"
+Spooky.Volume = 2
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = false
+Spooky:Play()
+  wait(0.3)
+  fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "FireLine"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(0.5, 10)
+fireParticles.Rate = 350
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-360, 360)
+fireParticles.Size = NumberSequence.new(0.25, 0)
+fireParticles.Speed = NumberRange.new(10, 30)
+fireParticles.SpreadAngle = Vector2.new(240, 240)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = game.Players.LocalPlayer.Character.Torso
+  wait(1.45)
+fireParticles.Enabled = false
+  fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "FireLine"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(0.5, 10)
+fireParticles.Rate = 1000
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-360, 360)
+fireParticles.Size = NumberSequence.new(2, 0)
+fireParticles.Speed = NumberRange.new(10, 30)
+fireParticles.SpreadAngle = Vector2.new(240, 240)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = game.Players.LocalPlayer.Character.Torso
+local Camera = game.Workspace.CurrentCamera
+local TweenService = game:GetService("TweenService")
+TweenService:Create(Camera, TweenInfo.new(0.3), {FieldOfView = 30}):Play()
+ wait(0.25)
+ TweenService:Create(Camera, TweenInfo.new(1.3), {FieldOfView = 70}):Play()
+  wait(0.25)
+fireParticles.Enabled = false
+  wait(3.65)
+  local player = game.Players.LocalPlayer
+local workspace = game:GetService("Workspace")
+
+local sphere = Instance.new("Part")
+sphere.Name = "BlackSphere"
+sphere.Size = Vector3.new(1, 1, 1)
+sphere.Color = Color3.fromRGB(0,0,0)
+sphere.Material = Enum.Material.Neon
+sphere.CanCollide = false
+sphere.Anchored = true
+sphere.Shape = Enum.PartType.Ball
+sphere.Parent = workspace
+
+local runService = game:GetService("RunService")
+runService.Heartbeat:Connect(function()
+  sphere.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -2)
+end)
+fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "FireLine"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(0.5, 1)
+fireParticles.Rate = 20
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-180, 180)
+fireParticles.Size = NumberSequence.new(0.3, 0)
+fireParticles.Speed = NumberRange.new(10, 10)
+fireParticles.SpreadAngle = Vector2.new(360, 360)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = sphere
+   wait(3.35)
+   local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+   Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "TBH_Execute"
+Spooky.SoundId = "rbxassetid://331888892"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = false
+Spooky:Play()
+sphere:Destroy()
+    neonPart = Instance.new("Part")
+    neonPart.Name = "NeonPart"
+    neonPart.Size = Vector3.new(20, 20, 20)
+    neonPart.Shape = Enum.PartType.Ball
+    neonPart.Color = Color3.fromRGB(25, 25, 25)
+    neonPart.Transparency = 0
+    neonPart.Material = Enum.Material.Neon
+    neonPart.CanCollide = false
+    neonPart.Parent = workspace
+    neonPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    neonPart.CFrame = neonPart.CFrame * CFrame.Angles(math.rad(90), 0, 0)
+    
+    fire = Instance.new("Fire")
+    fire.Color = neonPart.Color
+    fire.SecondaryColor = neonPart.Color
+    fire.Size = 99
+    fire.Heat = 40
+    fire.Parent = neonPart
+    
+    local smoke = Instance.new("Smoke")
+  smoke.Color = Color3.new(0, 0, 0)
+  smoke.Opacity = 0.6
+  smoke.RiseVelocity = 99
+  smoke.Size = 20
+  smoke.Parent = neonPart
+  
+  fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "TrueHoleEffect"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(5, 5)
+fireParticles.Rate = 1000
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-30, 30)
+fireParticles.Size = NumberSequence.new(5.5, 0)
+fireParticles.Speed = NumberRange.new(3, 3)
+fireParticles.SpreadAngle = Vector2.new(360, 360)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = neonPart
+
+game.Debris:AddItem(neonPart, 20)
+
+    partTween = game:GetService("TweenService"):Create(neonPart, TweenInfo.new(10, Enum.EasingStyle.Linear), {
+        Position = neonPart.Position + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * 20000
+    })
+    partTween:Play()
+ neonPart.Touched:Connect(function(hit)
+        if hit.Parent:FindFirstChildOfClass("Humanoid") then
+            humanoid = hit.Parent:FindFirstChildOfClass("Humanoid")
+            if humanoid.Parent ~= game.Players.LocalPlayer.Character and humanoid.Health ~= 0 then
+            local p = Instance.new("Part")
+p.Name = "TrueHoleHitboxCenter"
+p.Size = Vector3.new(1, 1, 1)
+p.Transparency = 1
+p.Anchored = true
+p.CanCollide = false
+p.Position = neonPart.Position
+p.CFrame = neonPart.CFrame
+p.Parent = workspace
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://18632048904"
+Spooky.Volume = 3
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = false
+Spooky:Play()
+neonPart:Destroy()
+  wait(0.8)
+    blackhole = Instance.new("Part")
+    blackhole.Name = "TrueHole"
+    blackhole.Size = Vector3.new(35, 35, 35)
+    blackhole.Shape = Enum.PartType.Ball
+    blackhole.Color = Color3.fromRGB(0, 0, 0)
+    blackhole.Transparency = 0
+    blackhole.Anchored = true
+    blackhole.Material = Enum.Material.Neon
+    blackhole.CanCollide = false
+    blackhole.Parent = workspace
+    blackhole.CFrame = p.CFrame
+  game:GetService("Debris"):AddItem(blackhole, 9.5)
+  for i = 1, 2 do
+    fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "FireLine"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(10, 10)
+fireParticles.Rate = 2500
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-10, 10)
+fireParticles.Size = NumberSequence.new(4.5, 0)
+fireParticles.Speed = NumberRange.new(400, 400)
+fireParticles.SpreadAngle = Vector2.new(360, 360)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = blackhole
+end
+            end
+            elseif hit.Parent:IsA("BasePart") or hit.Parent:IsA("Part") or hit.Parent:IsA("Humanoid") then
+            local p = Instance.new("Part")
+p.Name = "TrueHoleHitboxCenter"
+p.Size = Vector3.new(1, 1, 1)
+p.Transparency = 1
+p.Anchored = true
+p.CanCollide = false
+p.CFrame = neonPart.CFrame
+p.Parent = workspace
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://18632048904"
+Spooky.Volume = 3
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = false
+Spooky:Play()
+neonPart:Destroy()
+  wait(0.8)
+    blackhole = Instance.new("Part")
+    blackhole.Name = "TrueHole"
+    blackhole.Size = Vector3.new(35, 35, 35)
+    blackhole.Shape = Enum.PartType.Ball
+    blackhole.Color = Color3.fromRGB(0, 0, 0)
+    blackhole.Transparency = 0
+    blackhole.Anchored = true
+    blackhole.Material = Enum.Material.Neon
+    blackhole.CanCollide = false
+    blackhole.Parent = workspace
+    blackhole.CFrame = p.CFrame
+    game:GetService("Debris"):AddItem(blackhole, 9.5)
+    
+    for i = 1, 2 do
+    fireParticles = Instance.new("ParticleEmitter")
+fireParticles.Name = "FireLine"
+fireParticles.Enabled = true
+fireParticles.Lifetime = NumberRange.new(10, 10)
+fireParticles.Rate = 2500
+fireParticles.Rotation = NumberRange.new(0, 360)
+fireParticles.RotSpeed = NumberRange.new(-10, 10)
+fireParticles.Size = NumberSequence.new(4.5, 0)
+fireParticles.Speed = NumberRange.new(400, 400)
+fireParticles.SpreadAngle = Vector2.new(360, 360)
+fireParticles.Texture = "rbxassetid://13240623019"
+fireParticles.Parent = blackhole
+end
+        end
+    end)
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
